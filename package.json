@@ -1,0 +1,15 @@
+{
+  "name": "gmail-automation",
+  "version": "1.0.0",
+  "description": "Gmail automation script using Playwright",
+  "main": "gmail-automation.js",
+  "scripts": {
+    "start": "node gmail-automation.js",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.42.1",
+    "dotenv": "^16.4.5"
+  }
+}
