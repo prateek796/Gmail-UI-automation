@@ -1,56 +1,95 @@
-# Gmail Automation Script
+# Gmail UI Automation
 
-This script automates the process of replying to a Zeplyn email invitation using the Gmail API.
+This project demonstrates automated interaction with Gmail using Playwright.
+
+## Features
+
+- Automated Gmail login
+- Email search functionality
+- Automated email reply
+- Human-like interaction patterns
+- Anti-detection measures
+- Detailed test reporting
 
 ## Prerequisites
 
-- Node.js installed on your system
-- Google Cloud Project with Gmail API enabled
-- OAuth 2.0 credentials
+- Node.js (v14 or higher)
+- npm (Node Package Manager)
+- A Gmail account for testing
 
-## Setup
+## Installation
 
-1. Set up Google Cloud Project and enable Gmail API:
-   - Go to [Google Cloud Console](https://console.cloud.google.com)
-   - Create a new project
-   - Enable the Gmail API
-   - Go to Credentials
-   - Create OAuth 2.0 Client ID credentials
-   - Download the credentials JSON file
+1. Clone the repository:
+```bash
+git clone https://github.com/prateek796/Gmail-UI-automation.git
+cd Gmail-UI-automation
+```
 
 2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the root directory with your OAuth credentials:
+3. Create a `.env` file in the root directory with your Gmail credentials:
 ```
-GOOGLE_CLIENT_ID=your-client-id
-GOOGLE_CLIENT_SECRET=your-client-secret
-GOOGLE_REDIRECT_URI=http://localhost:3000/oauth2callback
-GOOGLE_REFRESH_TOKEN=your-refresh-token
+GMAIL_EMAIL=your.email@gmail.com
+GMAIL_PASSWORD=your_password
 ```
 
-4. Get the refresh token:
-   - Run the script once
-   - Follow the authentication flow in your browser
-   - Copy the refresh token from the console output
-   - Add it to your .env file
+## Configuration
 
-## Running the Script
+The project uses Playwright with specific configurations to avoid automation detection:
+
+- Non-headless mode for better visibility
+- Custom user agent
+- Geolocation settings
+- Viewport configuration
+- Anti-detection browser arguments
+
+Key configuration settings can be found in `playwright.config.js`.
+
+## Running Tests
+
+To run the tests:
 
 ```bash
-npm start
+npx playwright test
 ```
 
-The script will:
-1. Authenticate with Gmail API
-2. Search for emails from Zeplyn
-3. Find the most recent email
-4. Send a reply with the acceptance message
+To run tests with UI mode:
 
-## Notes
+```bash
+npx playwright test --ui
+```
 
-- This script uses the official Gmail API, which is more reliable and secure than browser automation
-- The script maintains proper email threading by using the original message's thread ID
-- Make sure your OAuth credentials have the necessary Gmail API scopes enabled 
+## Test Structure
+
+The main test file (`specs/gmail.spec.js`) includes the following test steps:
+
+1. Navigate to Gmail
+2. Login with credentials
+3. Search for specific emails
+4. Select and open an email
+5. Compose and send a reply
+6. Validate the reply
+
+## Anti-Detection Measures
+
+The automation includes several features to avoid detection:
+
+- Random delays between actions
+- Human-like typing patterns
+- Custom user agent
+- Geolocation spoofing
+- Browser fingerprint modifications
+
+## Test Reports
+
+After test execution, you can find the reports in:
+- HTML reports: `playwright-report/`
+- Test results: `test-results/`
+
+
+## License
+
+This project is open source and available under the MIT License. 
