@@ -66,7 +66,7 @@ test.describe('Gmail Automation', () => {
     await test.step('Search for email', async () => {
       await page.click('input[placeholder="Search mail"]');
       await randomDelay(300, 500);
-      const searchQuery = 'from:prateek';
+      const searchQuery = 'from:zeplyn';
       for (const char of searchQuery) {
         await page.type('input[placeholder="Search mail"]', char);
         await randomDelay(30, 80);
